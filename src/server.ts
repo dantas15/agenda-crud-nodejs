@@ -1,3 +1,4 @@
+import path from "path";
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
 
@@ -8,6 +9,9 @@ import { router } from "./routes";
 const app = express();
 
 app.use(express.json());
+import "./database";
+
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
 app.use(router);
 
